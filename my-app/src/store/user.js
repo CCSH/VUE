@@ -8,6 +8,7 @@ export default {
     tabList: [{ path: '/', name: 'home', label: '首页', url: 'Home/Home' }],
     menu: [],
   },
+
   mutations: {
     collapseMenu(state) {
       state.isCollapse = !state.isCollapse
@@ -112,6 +113,6 @@ export default {
       menuArr.forEach((item) => {
         router.addRoute('main', item)
       })
-    },
+    }
   },
 }

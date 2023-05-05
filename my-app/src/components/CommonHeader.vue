@@ -31,7 +31,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import Cookie from 'js-cookie'
 export default {
   data() {
     return {}
@@ -42,8 +41,7 @@ export default {
     },
     handleCommand(command) {
       if (command === 'logout') {
-        Cookie.remove('token')
-        Cookie.remove('menu')
+        this.cleanCookie()
         this.$router.push({ name: 'login' })
       }
     },

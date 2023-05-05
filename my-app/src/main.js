@@ -25,9 +25,30 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+//清空Cookie
+Vue.prototype.cleanCookie = function () {
+  var cookies = document.cookie.split(';')
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i]
+    var position = cookie.indexOf('=')
+    var name = position > -1 ? cookie.substr(0, position) : cookie
+    var domain = window.location.hostname
+    var path = '/'
+    document.cookie =
+      name +
+      '=; expires=Thu, 01-Jan-70 00:00:01 GMT; domain=' +
+      domain +
+      '; path=' +
+      path
+  }
+}
+
 new Vue({
   router,
   store,
+  data() {
+    return {}
+  },
   render: (h) => h(App),
   created() {
     //重新处理路由
