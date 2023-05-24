@@ -302,8 +302,6 @@ export default {
       setSearchVal: [], //高德地图赋值搜索内容
     }
   },
-  created() {},
-  watch: {},
   methods: {
     //select变化调用
     selectChange(value, index, prop) {

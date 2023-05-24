@@ -1,7 +1,5 @@
 <template>
-  <div>
-    mall
-  </div>
+  <div>mall</div>
 </template>
 
 <script>
