@@ -12,26 +12,94 @@ export default {
   data() {
     return {}
   },
+  /**
+   * Executes before the instance is created. Intended for advanced initialization.
+   *
+   * @return {void} Nothing is returned from this function
+   */
+  beforeCreate() {
+    //在创建实例之前执行。用于高级初始化。
+  },
+  /**
+   * Initialize component properties and APIs, and render the view on page load.
+   *
+   * @return {void}
+   */
   created() {
-    //页面准备加载
-    //在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图。
+    //初始化组件属性和api，并在页面加载时呈现视图。
+  },
+  /**
+   * Called before the component is mounted. This is the last time to modify
+   * the component before rendering. Generally, it is used to initialize
+   * third-party libraries and similar tasks. It is not recommended to modify
+   * the component's DOM structure at this point.
+   *
+   * @param {type} N/A - No parameters.
+   * @return {type} N/A - No return value.
+   */
+  beforeMount() {
+    //在组件安装前调用。这是最后一次修改渲染前的组件。通常，它用于初始化第三方库和类似任务。不建议修改此时组件的DOM结构。
+  },
+  /**
+   * Executes when the page is mounted and ready to be inserted into the DOM.
+   * This is a lifecycle method that is called during its corresponding lifecycle.
+   * For example: it can be used for data initialization.
+   *
+   * @param {type} N/A - no parameters.
+   * @return {type} N/A - no return value.
+   */
+  mounted() {
+    //当页面被挂载并准备插入DOM时执行。这是一个生命周期方法，在其相应的生命周期中被调用。例如:可用于数据初始化。
+    this.requestList()
+  },
+  /**
+   * Updates the component with new data before rendering.
+   *
+   * This function is called before the component is re-rendered with updated data.
+   *
+   * @return {void}
+   */
+  beforeUpdate() {
+    //在渲染前用新数据更新组件。此函数在用更新后的数据重新渲染组件之前调用。
+  },
+  /**
+   * Executes when the component is updated.
+   *
+   * @param None
+   * @return None
+   */
+  updated() {
+    //在组件更新时执行。
+  },
+  /**
+   * Executes before the component is destroyed.
+   *
+   * @param none
+   * @return none
+   */
+  beforeDestroy() {
+    //在组件被销毁之前执行。
+  },
+  /**
+   * Called after the component is destroyed.
+   *
+   * @param None
+   * @return None
+   */
+  destroyed() {
+    //在组件销毁后调用。
   },
   computed: {
-    //属性计算
-    //computed 是计算属性。computed是在HTML DOM加载后马上执行的，如赋值；
-  },
-  mounted: {
-    //页面加载完毕
-    //mounted 是生命周期方法之一，会在对应生命周期时执行。mounted是vue中的一个钩子函数，一般在初始化页面完成后，再对dom节点进行相关操作。
+    //计算属性，在HTML DOM加载后立即执行。例如，当分配数据时，计算属性立即执行。计算属性是自动的。
+    //tableData(){return []}
   },
   watch: {
-    //监听对象
-    //watch 监听 是一个对象，键是要观察的数据，值可以是对应的回调函数，也可以是方法名，或者包含选项的对象，在工作中，我一般是用回调，观察某个数据的变化。
-    //对于watched 属性 监听 需要自己手动去写监听的值 会大大的浪费一定性能去做监听这种事情 不像computed是自动的。
+    //绑定到Vue实例的监视程序。它必须具有触发条件才能执行，例如属性更改。
+    //tableData(newVal, oldVal) {},
   },
   methods: {
-    //事件方法
-    //methods 是Vue实例对象上绑定的方法，供当前Vue组件作用域内使用，未调用不会执行。methods必须要有一定的触发条件才能执行，如点击事件
+    //方法是Vue实例对象上绑定的方法。methods必须要有一定的触发条件才能执行。例如按钮点击。接口请求。
+    //requestList() {},
   },
 }
 </script>
