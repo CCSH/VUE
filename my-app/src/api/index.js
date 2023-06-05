@@ -1,6 +1,6 @@
 import http from '@/utils/http.js'
 
-const baseUrl = '/CCSH/api/-/raw/main'
+const baseUrl = 'api'
 
 //列表
 export function requestList() {

@@ -15,7 +15,7 @@ module.exports = defineConfig({
     // },
     proxy: {
       '/api': {
-        target: 'https://gitlab.com', //代理地址
+        target: 'https://host.com', //代理地址
         changeOrigin: true, //允许跨域请求
         secure: false,
         pathRewrire: {
