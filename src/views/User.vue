@@ -157,7 +157,8 @@ export default {
       tableObj: {
         rowKey: 'id',
         fit: true,
-        height: '50%',
+        maxHeight: '',
+        height: 'calc(100vh - 264px)',
       },
       // 列配置选项
       columnObj: {
@@ -377,7 +378,6 @@ export default {
 
 <style lang="less" scoped>
 .manage {
-  // height: 90%;
   .manage-header {
     height: 40px;
     margin-bottom: 15px;
@@ -392,9 +392,6 @@ export default {
         height: 60%;
       }
     }
-  }
-  /deep/.page_div {
-    background-color: white;
   }
 }
 </style>

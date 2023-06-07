@@ -1,5 +1,6 @@
 <template>
   <div class="z-table-div">
+    <!-- 表格 -->
     <el-table
       :data="tableData"
       :height="tableObj.height"
@@ -149,7 +150,10 @@
       </el-table-column>
     </el-table>
     <!-- 分页 -->
-    <div class="page_div" :style="{ textAlign: pageObj.position || 'center' }">
+    <div
+      class="z-page-div"
+      :style="{ textAlign: pageObj.position || 'center' }"
+    >
       <el-pagination
         :small="pageObj.small"
         :background="pageObj.background"
@@ -267,14 +271,16 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+// 列表div
 .z-table-div {
   border: 1px #ebeef5 solid;
   .el-table__body-wrapper {
     height: calc(50% - 48px) !important; // 表格高度减去表头的高度
   }
   // 分页div
-  .page_div {
-    padding: 15px;
+  .z-page-div {
+    padding: 10px;
+    background-color: white;
   }
 
   // table按钮间距
