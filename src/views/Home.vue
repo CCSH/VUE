@@ -256,7 +256,7 @@ export default {
 <style lang="less" scoped>
 .home {
   overflow: auto;
-  height: calc(100vh - 125px - 20px);
+  height: calc(100vh - (60px + 45px + 40px + 40px));
 }
 .user {
   display: flex;

@@ -277,6 +277,7 @@ export default {
   .el-table__body-wrapper {
     height: calc(50% - 48px) !important; // 表格高度减去表头的高度
   }
+
   // 分页div
   .z-page-div {
     padding: 10px;

@@ -14,6 +14,9 @@
           <!-- 路由匹配到的组件将渲染在这里 -->
           <router-view></router-view>
         </el-main>
+        <el-footer style="height: 40px">
+          <p>Copyright © {{ year }} CCSH</p>
+        </el-footer>
       </el-container>
     </el-container>
   </div>
@@ -32,6 +35,11 @@ export default {
     CommonHeader,
     CommonTag,
   },
+  computed: {
+    year: function () {
+      return new Date().getFullYear()
+    },
+  },
 }
 </script>
 
@@ -39,7 +47,21 @@ export default {
 .el-header {
   padding: 0;
 }
+
 .el-container {
   background-color: #eee;
+}
+
+.el-main {
+  min-height: 0%;
+}
+
+.el-footer {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  p {
+    line-height: 40px;
+  }
 }
 </style>
