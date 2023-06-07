@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <el-row>
       <el-col :span="8" style="padding-right: 10px">
         <el-card class="box-card" shadow="hover">
@@ -254,6 +254,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.home {
+  overflow: auto;
+  height: calc(100vh - 125px - 20px);
+}
 .user {
   display: flex;
   align-items: center;

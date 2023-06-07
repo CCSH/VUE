@@ -158,7 +158,7 @@ export default {
         rowKey: 'id',
         fit: true,
         maxHeight: '',
-        height: 'calc(100vh - 264px)',
+        height: 'calc(100vh - 255px)',
       },
       // 列配置选项
       columnObj: {
