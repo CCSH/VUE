@@ -55,8 +55,9 @@ export default {
 
 <style lang="less" scoped>
 .tabs {
+  display: flex;
   padding: 20px;
-  padding-bottom: 0;
+  overflow: auto;
   .el-tag {
     margin-right: 15px;
     cursor: pointer;

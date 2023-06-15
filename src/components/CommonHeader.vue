@@ -79,6 +79,8 @@ export default {
     display: flex;
     align-items: center;
     .el-breadcrumb {
+      display: flex;
+      overflow: auto;
       margin-left: 20px;
     }
     /deep/.el-breadcrumb__item {

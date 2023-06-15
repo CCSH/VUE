@@ -254,9 +254,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@content-height: calc(100vh - (60px + 64px + 20px + 40px));
 .home {
   overflow: auto;
-  height: calc(100vh - (60px + 45px + 40px + 40px));
+  height: @content-height;
 }
 .user {
   display: flex;

@@ -484,7 +484,6 @@ form {
     line-height: 24px;
   }
 }
-
 // /deep/.common-editor {
 //   padding-left: @width;
 // }

@@ -157,8 +157,6 @@ export default {
       tableObj: {
         rowKey: 'id',
         fit: true,
-        maxHeight: '',
-        height: 'calc(100vh - 295px)',
       },
       // 列配置选项
       columnObj: {
@@ -377,7 +375,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@content-height: calc(100vh - (60px + 64px + 20px + 40px));
 .manage {
+  overflow: auto;
+  height: @content-height;
   .manage-header {
     height: 40px;
     margin-bottom: 15px;

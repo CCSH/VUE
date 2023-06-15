@@ -53,13 +53,14 @@ export default {
 }
 
 .el-main {
-  min-height: 0%;
+  padding: 0 20px;
 }
 
 .el-footer {
   background-color: #fff;
   color: #333;
   text-align: center;
+  margin-top: 20px;
   p {
     line-height: 40px;
   }
