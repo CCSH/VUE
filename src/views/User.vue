@@ -375,10 +375,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@content-height: calc(100vh - (60px + 64px + 20px + 40px));
 .manage {
   overflow: auto;
-  height: @content-height;
+  margin-bottom: -100%;
   .manage-header {
     height: 40px;
     margin-bottom: 15px;
