@@ -1,17 +1,6 @@
 <template>
   <div class="manage">
-    <el-dialog
-      :title="modalType === 0 ? '新增数据' : '编辑数据'"
-      :visible.sync="dialog"
-      width="50%"
-    >
-      <common-form ref="commonForm" :formObj="formObj" :formData="formData" />
-
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialog = false">取 消</el-button>
-        <el-button type="primary" @click="dialogOK">确 定</el-button>
-      </span>
-    </el-dialog>
+    <!--  头部操作 -->
     <div class="manage-header">
       <el-button type="primary" @click="addOperation" icon="el-icon-plus"
         >新增</el-button
@@ -25,6 +14,7 @@
         <el-button type="primary" @click="searchClick">查询</el-button>
       </div>
     </div>
+    <!-- 表格 -->
     <common-table
       :tableData="tableData"
       :columnObj="columnObj"
@@ -34,6 +24,19 @@
       @sizeChange="sizeChange"
     >
     </common-table>
+    <!-- 弹窗 -->
+    <el-dialog
+      :title="modalType === 0 ? '新增数据' : '编辑数据'"
+      :visible.sync="dialog"
+      width="50%"
+    >
+      <common-form ref="commonForm" :formObj="formObj" :formData="formData" />
+
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialog = false">取 消</el-button>
+        <el-button type="primary" @click="dialogOK">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -162,12 +165,6 @@ export default {
       columnObj: {
         // 选择框
         selection: false,
-        // 选择框根据条件是否可选
-        selectable: (row, index) => {
-          if (row.switchs) {
-            return true
-          }
-        },
         //column列,columType(列类型,可选text(默认为普通文字模式),input(input可编辑框),switch(switch开关),image(图片),operation(操作按钮))
         //prop(参数),label(列名),width(宽度),align(对齐方式),sortable(是否支持排序)
         columnData: [
@@ -225,10 +222,8 @@ export default {
             sortable: false,
             operation: [
               {
-                // type: 'primary',
                 label: '编辑',
                 icon: '',
-                // size: 'mini',
                 buttonClick: this.editOperation,
                 isShow: (row, $index) => {
                   return true
@@ -238,7 +233,6 @@ export default {
                 type: 'danger',
                 label: '删除',
                 icon: '',
-                // size: 'mini',
                 buttonClick: this.deleteOperation,
                 isShow: (row, $index) => {
                   return true

@@ -80,13 +80,22 @@
           <span v-if="column.text && column.editRow != $index">{{
             row[column.prop]
           }}</span>
+          <!-- 自定义内容 -->
+          <template v-if="column.ownDefined">
+            <slot
+              :name="column.prop || 'default'"
+              :index="$index"
+              :row="row"
+              :column="column"
+            >
+              <span>
+                {{ column.ownDefinedReturn(row, $index) }}
+              </span>
+            </slot>
+          </template>
           <!-- 状态对象展示 -->
           <span v-if="column.status && row[column.prop]">{{
             row[column.prop].msg
-          }}</span>
-          <!-- 自定义内容 -->
-          <span v-if="column.ownDefined">{{
-            column.ownDefinedReturn(row, $index)
           }}</span>
           <!-- switch开关 -->
           <el-switch
@@ -139,7 +148,7 @@
                 :icon="operations.icon"
                 :type="operations.type"
                 @click="operations.buttonClick(row, $index)"
-                :style="{ color: operations.color }"
+                :style="operations.style"
                 :size="operations.size || 'mini'"
               >
                 {{ operations.label }}

@@ -5,7 +5,7 @@
 			<!-- <z-el-table :tableData="tableData" :columObj="columObj" :pageObj="pageObj" @switchChange="switchChange" @editInputBlur="editInputBlur" @rowClick="rowClick"
 				@handleSizeChange="handleSizeChange" @handleCurrentChange="handleCurrentChange">
 			</z-el-table> -->
-			<publicTable :tableData="tableData"
+			<commonTable :tableData="tableData"
 				:columnObj="columnObj"
 				:tableObj="tableObj"
 				:pageObj="pageObj"
@@ -14,7 +14,10 @@
 				@rowClick="rowClick"
 				@handleSizeChange="handleSizeChange"
 				@handleCurrentChange="handleCurrentChange">
-			</publicTable>
+				<template #sex="{ row, column, index }">
+       		自定义插槽 {{ column.ownDefinedReturn(row, index) }}
+      	</template>
+			</commonTable>
 		</el-card>
 	</div>
 </template>
@@ -257,7 +260,7 @@
 							align: "center",
 							sortable: false,
 						},
-						//如果为操作列,则需要填写需要的操作按钮,类型为Object。operation(操作类型,可选edit,delete,see),type(按钮样式,参考el—botton类型),label(按钮文字)icon(参考el-icon),color(字体颜色)
+						//如果为操作列,则需要填写需要的操作按钮,类型为Object。operation(操作类型,可选edit,delete,see),type(按钮样式,参考el—botton类型),label(按钮文字)icon(参考el-icon),style(样式)
 						{
 							isOperation: true,
 							label: "操作",
@@ -268,7 +271,7 @@
 								type: "text",
 								label: "编辑",
 								icon: "",
-								color: 'red',
+								style: 'coloer:red;',
 								buttonClick: this.rowOperation,
 								isShow: (row, $index) => {
 									return true;
@@ -329,4 +332,3 @@
 <style lang="scss">
 </style>
 ```
-
