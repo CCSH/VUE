@@ -2,16 +2,36 @@
   <div class="manage">
     <!--  头部操作 -->
     <div class="manage-header">
-      <el-button type="primary" @click="addOperation" icon="el-icon-plus"
-        >新增</el-button
+      <el-button
+        type="primary"
+        @click="addOperation"
+        icon="el-icon-plus"
+        size="mini"
+        >新建</el-button
       >
-      <div class="search-content">
-        <el-input
-          v-model="keyWord"
-          placeholder="请输入"
-          size="small"
-        ></el-input>
-        <el-button type="primary" @click="searchClick">查询</el-button>
+      <!-- 表单 -->
+      <el-form
+        :model="formSearchData"
+        :inline="true"
+        ref="searchForm"
+        style="display:flex; justify-content:flex-end; width: 100%; height: 41px"
+      >
+        <el-form-item>
+          <el-input
+            v-model="formSearchData.keyWord"
+            placeholder="请输入关键字"
+            size="mini"
+            clearable
+            style="width: 150px; margin-right: 10px;"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <!-- 操作 -->
+      <div style="display: flex; justify-content: flex-end;">
+        <el-button type="primary" @click="searchClick" size="mini"
+          >搜索</el-button
+        >
+        <el-button size="mini" @click="resetFrom">重置</el-button>
       </div>
     </div>
     <!-- 表格 -->
@@ -30,7 +50,11 @@
       :visible.sync="dialog"
       width="50%"
     >
-      <common-form ref="commonForm" :formObj="formObj" :formData="formData" />
+      <common-form
+        ref="addForm"
+        :formObj="formAddObj"
+        :formData="formAddData"
+      />
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialog = false">取 消</el-button>
@@ -54,8 +78,8 @@ export default {
     return {
       dialog: false, //弹出框
       modalType: 0, // 0 新增、1 编辑
-      // form 配置项
-      formObj: [
+      // 添加 form 配置项
+      formAddObj: [
         {
           input: true, //是input
           label: '姓名', //字段
@@ -138,7 +162,8 @@ export default {
           ],
         },
       ],
-      formData: {
+      // 添加 表单内容
+      formAddData: {
         id: '',
         name: '',
         age: '',
@@ -146,7 +171,10 @@ export default {
         date: '',
         address: '',
       },
-
+      // 搜索 表单内容
+      formSearchData: {
+        keyWord: '',
+      },
       // page 配置项
       pageObj: {
         position: 'right',
@@ -155,7 +183,6 @@ export default {
           pageSize: 10,
         },
       },
-
       // table配置选项
       tableObj: {
         rowKey: 'id',
@@ -243,14 +270,13 @@ export default {
         ],
       },
       tableData: [],
-      keyWord: '',
     }
   },
   watch: {
     //dialog监听
     dialog(newVal, oldVal) {
       if (!newVal) {
-        this.$refs.commonForm.resetForm() //窗口关闭清空表单
+        this.$refs.addForm.resetForm() //窗口关闭清空表单
       }
     },
   },
@@ -258,13 +284,11 @@ export default {
     //dialog确认
     dialogOK() {
       //判断表单验证是否通过
-      if (this.$refs.commonForm.submitForm()) {
-        console.log('success')
-        console.log(this.formData)
+      if (this.$refs.addForm.submitForm()) {
         if (this.modalType === 0) {
-          this.addData(this.formData)
+          this.addData(this.formAddData)
         } else {
-          this.editData(this.formData)
+          this.editData(this.formAddData)
         }
         this.dialog = false
       } else {
@@ -278,9 +302,8 @@ export default {
     },
     //编辑操作
     editOperation(row, $index) {
-      console.log(row, $index)
       var item = JSON.parse(JSON.stringify(row))
-      this.formData = item
+      this.formAddData = item
       this.modalType = 1
       this.dialog = true
     },
@@ -300,13 +323,10 @@ export default {
     //编辑数据
     editData(data) {
       const index = this.tableData.findIndex((item) => item.id === data.id)
-      console.log('ccsh', index)
       data.id = 'edit' + this.tableData.length
       var item = JSON.parse(JSON.stringify(data))
       Vue.set(this.tableData, index, item)
     },
-    //删除数据
-    deleteData(data) {},
     //页码变化
     currentChange(e) {
       this.pageObj.pageData.currentPage = e
@@ -316,7 +336,6 @@ export default {
         this.pageObj.total
           ? this.pageObj.pageData.pageSize
           : this.pageObj.total % this.pageObj.pageData.pageSize
-      console.log('ccsh', count)
       this.tableData = this.getData(e, count)
     },
     //条数变化
@@ -328,7 +347,9 @@ export default {
     //模拟获取数据
     getData(page, count) {
       var list = []
-      var name = this.keyWord ? '搜索：' + this.keyWord + '_' : ''
+      var name = this.formSearchData.keyWord
+        ? '搜索：' + this.formSearchData.keyWord + '_'
+        : ''
       for (let index = 0; index < count; index++) {
         var data = {
           id: index,
@@ -350,7 +371,10 @@ export default {
     },
     //搜索点击
     searchClick() {
-      if (this.keyWord.length) {
+      if (
+        this.formSearchData.keyWord &&
+        this.formSearchData.keyWord.length > 0
+      ) {
         var count = Math.floor(Math.random() * 100)
         this.tableData = this.getData(1, count / 10)
         this.pageObj.total = count
@@ -359,6 +383,11 @@ export default {
         // 没内容展示所有
         this.initData()
       }
+    },
+    //重置表单
+    resetFrom(prop, index) {
+      this.formSearchData = {}
+      this.initData()
     },
   },
   mounted() {
@@ -373,19 +402,8 @@ export default {
   overflow: auto;
   margin-bottom: -100%;
   .manage-header {
-    height: 40px;
-    margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    .search-content {
-      display: flex;
-      align-items: center;
-      .el-input {
-        margin-right: 15px;
-        height: 60%;
-      }
-    }
   }
 }
 </style>

@@ -17,6 +17,17 @@
         :prop="formobj.prop"
         :rules="formobj.rules"
       >
+        <!-- 自定义内容 -->
+        <template v-if="formobj.diy">
+          <slot
+            :name="formobj.prop || 'default'"
+            :data="formobj"
+          >
+            <span>
+              {{ formobj.placeholder }}
+            </span>
+          </slot>
+        </template>
         <!-- inupt输入框 -->
         <el-input
           v-if="formobj.input"
@@ -244,7 +255,7 @@
         <!-- text展示 -->
         <span v-if="formobj.text" v-text="formData[formobj.prop]" />
         <!-- 计量单位 -->
-        <span v-if="formobj.unit" class="left10">{{ formobj.unit }}</span>
+        <span v-if="formobj.unit" style="margin-left: 10px">{{ formobj.unit }}</span>
 
         <!-- 高德地图 -->
         <!-- <div class="amap_div" v-if="formobj.aMap">
