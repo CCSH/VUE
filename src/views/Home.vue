@@ -154,9 +154,6 @@ export default {
   },
   mounted() {
     requestList().then((res) => {
-      const data = res.data
-      console.log(data)
-
       // 折线图
       // 基于准备好的dom，初始化echarts实例
       var echarts1 = echarts.init(this.$refs.echarts1)
@@ -184,8 +181,6 @@ export default {
       echarts1Option.yAxis = {}
       echarts1Option.xAxis = xAxisData
       echarts1Option.legend = xAxisData
-
-      console.log(echarts1Option)
 
       // 使用刚指定的配置项和数据显示图表。
       echarts1.setOption(echarts1Option)

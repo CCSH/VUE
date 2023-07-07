@@ -297,6 +297,7 @@ export default {
     },
     //添加操作
     addOperation() {
+      this.formAddData = {}
       this.modalType = 0
       this.dialog = true
     },

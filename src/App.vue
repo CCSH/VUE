@@ -99,7 +99,8 @@ export default {
   },
   methods: {
     //方法是Vue实例对象上绑定的方法。methods必须要有一定的触发条件才能执行。例如按钮点击。接口请求。
-    requestList() {},
+    requestList() {
+    },
   },
 }
 </script>
