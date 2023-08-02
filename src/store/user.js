@@ -7,6 +7,7 @@ export default {
     isCollapse: false,
     tabList: [{ path: '/', name: 'home', label: '首页', url: 'Home/Home' }],
     menu: [],
+    menuArr: [],
   },
 
   mutations: {
@@ -44,18 +45,8 @@ export default {
           {
             menu = [
               { path: '/home', name: 'home', label: '首页', url: 'Home' },
-              {
-                path: '/mall',
-                name: 'mall',
-                label: '商品管理',
-                url: 'Mall',
-              },
-              {
-                path: '/user',
-                name: 'user',
-                label: '用户管理',
-                url: 'User',
-              },
+              { path: '/mall', name: 'mall', label: '商品管理', url: 'Mall' },
+              { path: '/user', name: 'user', label: '用户管理', url: 'User' },
               {
                 label: '其他',
                 children: [
@@ -80,12 +71,7 @@ export default {
           {
             menu = [
               { path: '/home', name: 'home', label: '首页', url: 'Home' },
-              {
-                path: '/mall',
-                name: 'mall',
-                label: '商品管理',
-                url: 'Mall',
-              },
+              { path: '/mall', name: 'mall', label: '商品管理', url: 'Mall' },
             ]
           }
           break
@@ -94,14 +80,25 @@ export default {
       //存起来
       Cookie.set('menu', JSON.stringify(menu))
 
+      //路由数据
+      state.menuArr = []
+      this.commit('routerData', menu)
+
+      //添加路由
+      state.menuArr.forEach((item) => {
+        router.addRoute('main', item)
+      })
+    },
+    //路由数据
+    routerData(state, menu) {
       //处理路由
       var menuArr = []
       menu.forEach((item) => {
         if (item.children) {
           var val = []
-          val = item.children.map((item) => {
-            item.component = () => import('@/views/' + item.url)
-            return item
+          val = item.children.map((item2) => {
+            item2.component = () => import('@/views/' + item2.url)
+            return item2
           })
           menuArr.push(...val)
         } else {
@@ -109,10 +106,7 @@ export default {
           menuArr.push(item)
         }
       })
-      //添加路由
-      menuArr.forEach((item) => {
-        router.addRoute('main', item)
-      })
-    }
+      state.menuArr = menuArr
+    },
   },
 }

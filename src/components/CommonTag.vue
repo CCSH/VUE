@@ -26,7 +26,6 @@ export default {
       tags: (state) => state.user.tabList,
     }),
   },
-  mounted() {},
   methods: {
     ...mapMutations(['closeMenu']),
     actionMenu(data) {
