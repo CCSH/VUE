@@ -45,6 +45,8 @@
         :selectable="columnObj.selectable"
         width="50px"
       />
+      <!-- 序号 -->
+      <el-table-column v-if="columnObj.index" type="index"> </el-table-column>
       <!-- 普通列 -->
       <el-table-column
         v-for="(column, columIndex) in columnObj.columnData"

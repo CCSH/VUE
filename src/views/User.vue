@@ -14,7 +14,12 @@
         :model="formSearchData"
         :inline="true"
         ref="searchForm"
-        style="display:flex; justify-content:flex-end; width: 100%; height: 41px"
+        style="
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          height: 41px;
+        "
       >
         <el-form-item>
           <el-input
@@ -22,12 +27,12 @@
             placeholder="请输入关键字"
             size="mini"
             clearable
-            style="width: 150px; margin-right: 10px;"
+            style="width: 150px; margin-right: 10px"
           ></el-input>
         </el-form-item>
       </el-form>
       <!-- 操作 -->
-      <div style="display: flex; justify-content: flex-end;">
+      <div style="display: flex; justify-content: flex-end">
         <el-button type="primary" @click="searchClick" size="mini"
           >搜索</el-button
         >
@@ -68,6 +73,8 @@
 import CommonForm from '@/components/CommonForm.vue'
 import CommonTable from '@/components/CommonTable.vue'
 import Vue from 'vue'
+import { user_config } from '@/utils/static_config'
+
 export default {
   components: {
     CommonTable,
@@ -191,7 +198,8 @@ export default {
       // 列配置选项
       columnObj: {
         // 选择框
-        selection: false,
+        // selection: true,
+        // index: true,
         //column列,columType(列类型,可选text(默认为普通文字模式),input(input可编辑框),switch(switch开关),image(图片),operation(操作按钮))
         //prop(参数),label(列名),width(宽度),align(对齐方式),sortable(是否支持排序)
         columnData: [
