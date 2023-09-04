@@ -39,6 +39,7 @@
 
 <script>
 import Cookie from 'js-cookie'
+import { mapState } from 'vuex'
 export default {
   data() {
     return {}
@@ -63,14 +64,14 @@ export default {
   },
 
   computed: {
+    ...mapState({
+      isCollapse: (state) => state.user.isCollapse,
+    }),
     noChildren() {
       return this.menuData.filter((item) => !item.children)
     },
     hasChildren() {
       return this.menuData.filter((item) => item.children)
-    },
-    isCollapse() {
-      return this.$store.state.user.isCollapse
     },
     menuData() {
       return JSON.parse(Cookie.get('menu')) || this.$store.state.user.menu

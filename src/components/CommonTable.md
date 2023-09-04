@@ -34,8 +34,8 @@
 					position: "left", //分页组件位置
 					total: 100,
 					pageData: {
-						currentPage: 1,
-						pageSize: 10
+						page: 1,
+						size: 10
 					}
 				},
 				tableData: [{
