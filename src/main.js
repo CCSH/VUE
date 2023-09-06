@@ -5,6 +5,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import store from './store'
 import Cookie from 'js-cookie'
+import './assets/css/global.scss'
+import './assets/css/common.scss'
 
 //全局引入
 Vue.use(ElementUI)

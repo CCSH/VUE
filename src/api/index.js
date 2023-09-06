@@ -1,13 +1,8 @@
 import http from '@/utils/http.js'
 
-const baseUrl = 'api'
+export const baseUrl = process.env.VUE_APP_BASE_URL
 
 //列表
 export function requestList() {
-  return http.get(baseUrl + '/list.json')
-}
-
-//表单
-export function requestForm() {
-  return http.get(baseUrl + '/form.json')
+  return http.get(baseUrl + '1.json')
 }
