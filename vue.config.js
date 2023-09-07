@@ -15,11 +15,13 @@ module.exports = defineConfig({
 	devServer: {
 		// 跨域
 		proxy: {
-			[process.env.VUE_APP_BASE_URL]: {
+			[process.env.VUE_APP_BASE_API]: {
 				target: process.env.VUE_APP_BASE_URL, //目标地址
 				changeOrigin: true, //是否跨域
+				// ws: false, //是否启用websockets
+				// secure: false, //是否启用https
 				pathRewrite: {
-					['^' + process.env.VUE_APP_BASE_URL]: '',
+					['^' + process.env.VUE_APP_BASE_API]: '',
 				},
 				timeout: 20 * 60 * 1000,
 			},
@@ -37,9 +39,9 @@ module.exports = defineConfig({
 		// config.resolve.alias.set('@', resolve('./src')).set('components', resolve('./src/components')).set('assets', resolve('./src/assets')).set('views', resolve('./src/views')).set('network', resolve('./src/network'))
 		//注意 store 和 router 没必要配置
 
-		config.plugin('html').tap(args => {
-			args[0].title = 'CCSH管理平台'
-			return args
-		})
+		// config.plugin('html').tap(args => {
+		// 	args[0].title = 'CCSH管理平台'
+		// 	return args
+		// })
 	},
 })
