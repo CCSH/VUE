@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from './user'
+
+import data from './modules/data.js'
+import user from "./modules/user.js";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
+    data,
     user,
   },
 })
+export default store
