@@ -7,6 +7,7 @@ import store from './store'
 import Cookie from 'js-cookie'
 import '@/assets/css/global.less'
 import '@/assets/css/common.less'
+import '@/utils/tool.js';
 
 //全局引入
 Vue.use(ElementUI)

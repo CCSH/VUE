@@ -1,12 +1,17 @@
 <template>
-  <div>Page1</div>
+	<div>Page1{{ name }}</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {}
-  },
+	data() {
+		return {}
+	},
+	computed: {
+		name() {
+			return this.displayName(1, [{ label: '哈哈', value: 1 }])
+		},
+	},
 }
 </script>
 
