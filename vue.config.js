@@ -1,5 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 const chalk = require('chalk')
+//跨域替换
+let api = process.env.VUE_APP_BASE_API
+let url = process.env.VUE_APP_BASE_URL
 
 module.exports = defineConfig({
 	publicPath: './',
@@ -15,15 +18,15 @@ module.exports = defineConfig({
 	devServer: {
 		// 跨域
 		proxy: {
-			[process.env.VUE_APP_BASE_API]: {
-				target: process.env.VUE_APP_BASE_URL, //目标地址
+			[`${api}`]: {
+				target: `${url}`, //目标地址
 				changeOrigin: true, //是否跨域
 				// ws: false, //是否启用websockets
 				// secure: false, //是否启用https
 				pathRewrite: {
-					['^' + process.env.VUE_APP_BASE_API]: '',
+					['^' + `${api}`]: '',
 				},
-				timeout: 20 * 60 * 1000,
+				timeout: 20 * 1000,
 			},
 		},
 	},
