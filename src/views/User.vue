@@ -103,7 +103,7 @@ export default {
 						align: 'center',
 						sortable: false,
 						ownDefinedReturn: (row, $index) => {
-							return displayName(row.sex, sex_data)
+							return this.displayName(row.sex, sex_data)
 						},
 					},
 					{
@@ -255,6 +255,7 @@ export default {
 				}
 				list.push(data)
 			}
+			console.log("ccsh",list);
 			return list
 		},
 	},

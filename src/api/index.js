@@ -1,7 +1,6 @@
 import http from '@/utils/http.js'
 
-export const baseUrl = process.env.VUE_APP_BASE_URL
-export const hostUrl = process.env.VUE_APP_BASE_API + '/xxx/'
+export const hostUrl = process.env.VUE_APP_BASE_API + '/CCSH/'
 
 //列表
 export function requestList() {
