@@ -169,12 +169,8 @@ Vue.mixin({
 				case 8:
 					//首字母大写
 					if (e.length > 0) {
-						return e.charAt(0).toUpperCase() + str.slice(1)
+						return e.charAt(0).toUpperCase() + e.slice(1)
 					}
-					break
-				case 9:
-					//只有 数字、字母、下划线
-					pattern = /^\w+$/
 					break
 			}
 			return e.replace(pattern, '')
