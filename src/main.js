@@ -8,6 +8,9 @@ import Cookie from 'js-cookie'
 import '@/assets/css/global.less'
 import '@/assets/css/common.less'
 import '@/utils/tool.js';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
+Vue.use(Antd);
 
 //全局引入
 Vue.use(ElementUI)
