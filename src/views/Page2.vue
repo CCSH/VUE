@@ -42,7 +42,7 @@
 		</div>
 		<a-row :gutter="[8, 0]">
 			<a-col :span="4">
-				<a-card style="height: 100vh">
+				<a-card>
 					<a-row>
 						<a-col :span="24" class="rect-printElement-types hiprintEpContainer">
 							<a-row class="drag_item_title">拖拽组件列表</a-row>
