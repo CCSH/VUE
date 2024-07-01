@@ -20,7 +20,7 @@
 
 <script>
 export default {
-	name: 'preView',
+	name: 'printView',
 	props: {},
 	data() {
 		return {

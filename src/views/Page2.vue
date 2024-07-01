@@ -167,7 +167,7 @@
 			</a-col>
 		</a-row>
 		<!-- 预览 -->
-		<pre-view ref="preView" />
+		<printView ref="preView" />
 	</a-card>
 </template>
 
@@ -175,7 +175,7 @@
 import * as vuePluginHiprint from 'vue-plugin-hiprint'
 import printData from './static/print-data'
 import jsonView from './print/jsonView.vue'
-import preView from './print/preView.vue'
+import printView from './print/printView.vue'
 import src from './static/ccsh.js' //替换属性
 
 var hiprint, defaultElementTypeProvider, panel
@@ -183,7 +183,7 @@ let hiprintTemplate
 
 export default {
 	name: 'printDesign',
-	components: { preView, jsonView },
+	components: { printView, jsonView },
 	data() {
 		return {
 			template: null,
