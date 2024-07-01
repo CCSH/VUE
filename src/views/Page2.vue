@@ -50,7 +50,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.text" style>
-											<span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>
+											<span class="iconfont sv-text" aria-hidden="true"></span>
 											<p class="glyphicon-class">文本</p>
 										</a>
 									</div>
@@ -58,7 +58,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.image" style>
-											<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+											<span class="iconfont sv-image" aria-hidden="true"></span>
 											<p class="glyphicon-class">图片</p>
 										</a>
 									</div>
@@ -68,15 +68,15 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.longText">
-											<span class="glyphicon glyphicon-subscript" aria-hidden="true"></span>
+											<span class="iconfont sv-longText" aria-hidden="true"></span>
 											<p class="glyphicon-class">长文</p>
 										</a>
 									</div>
 								</a-col>
 								<a-col :span="12" class="drag_item_box">
 									<div>
-										<a class="ep-draggable-item" tid="defaultModule.table" style>
-											<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+										<a class="ep-draggable-item" tid="defaultModule.emptyTable" style>
+											<span class="iconfont sv-table" aria-hidden="true"></span>
 											<p class="glyphicon-class">表格</p>
 										</a>
 									</div>
@@ -85,27 +85,9 @@
 							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
-										<a class="ep-draggable-item" tid="defaultModule.emptyTable" style>
-											<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-											<p class="glyphicon-class">空白表格</p>
-										</a>
-									</div>
-								</a-col>
-								<a-col :span="12" class="drag_item_box">
-									<div>
 										<a class="ep-draggable-item" tid="defaultModule.html" style="">
-											<span class="glyphicon glyphicon-header" aria-hidden="true"></span>
+											<span class="iconfont sv-html" aria-hidden="true"></span>
 											<p class="glyphicon-class">html</p>
-										</a>
-									</div>
-								</a-col>
-							</a-row>
-							<a-row>
-								<a-col :span="12" class="drag_item_box">
-									<div>
-										<a class="ep-draggable-item" tid="defaultModule.customText" style>
-											<span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>
-											<p class="glyphicon-class">自定义</p>
 										</a>
 									</div>
 								</a-col>
@@ -115,7 +97,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.hline" style>
-											<span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+											<span class="iconfont sv-hline" aria-hidden="true"></span>
 											<p class="glyphicon-class">横线</p>
 										</a>
 									</div>
@@ -123,7 +105,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.vline" style>
-											<span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+											<span class="iconfont sv-vline" aria-hidden="true"></span>
 											<p class="glyphicon-class">竖线</p>
 										</a>
 									</div>
@@ -133,7 +115,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.rect">
-											<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+											<span class="iconfont sv-rect" aria-hidden="true"></span>
 											<p class="glyphicon-class">矩形</p>
 										</a>
 									</div>
@@ -141,8 +123,8 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.oval">
-											<span class="glyphicon glyphicon-record" aria-hidden="true"></span>
-											<p class="glyphicon-class">椭圆</p>
+											<span class="iconfont sv-oval" aria-hidden="true"></span>
+											<p class="glyphicon-class">圆形</p>
 										</a>
 									</div>
 								</a-col>
@@ -151,7 +133,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.barcode">
-											<span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+											<span class="iconfont sv-barcode" aria-hidden="true"></span>
 											<p class="glyphicon-class">条形码</p>
 										</a>
 									</div>
@@ -159,7 +141,7 @@
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.qrcode">
-											<span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
+											<span class="iconfont sv-qrcode" aria-hidden="true"></span>
 											<p class="glyphicon-class">二维码</p>
 										</a>
 									</div>
@@ -191,8 +173,8 @@
 import * as vuePluginHiprint from 'vue-plugin-hiprint'
 import printData from './static/print-data'
 import src from './static/ccsh.js'
-import printPreview from './print/preview.vue'
-import jsonView from './print/json-view.vue'
+import printPreview from './print/preView.vue'
+import jsonView from './print/jsonView.vue'
 
 var hiprint, defaultElementTypeProvider, panel
 let hiprintTemplate

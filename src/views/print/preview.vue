@@ -52,10 +52,6 @@ export default {
 			this.printData = printData
 			setTimeout(() => {
 				// eslint-disable-next-line no-undef
-				console.log('222222222222222222222')
-				console.log(hiprintTemplate)
-				console.log(printData)
-				console.log(hiprintTemplate.getHtml(printData))
 				$('#preview_content_design').html(hiprintTemplate.getHtml(printData))
 				$('#abc').html(hiprintTemplate.getHtml(printData))
 				this.spinning = false
@@ -87,5 +83,11 @@ export default {
 
 /deep/ .ant-modal-content {
 	margin-bottom: 24px;
+}
+/deep/ #preview_content_design {
+	-webkit-print-color-adjust: exact;
+	text-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
 }
 </style>
