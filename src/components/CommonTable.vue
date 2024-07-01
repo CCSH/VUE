@@ -281,7 +281,7 @@ export default {
   },
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 // 列表div
 .z-table-div {
   border: 1px #ebeef5 solid;

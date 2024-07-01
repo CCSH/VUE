@@ -14,8 +14,6 @@
 		"echarts": "^5.1.2",
 		"element-ui": "^2.15.13",
 		"js-cookie": "^3.0.1",
-		"less": "^4.1.2",
-		"less-loader": "^6.0.0",
 		"mockjs": "^1.1.0",
 		"vue": "^2.6.14",
 		"vue-plugin-hiprint": "0.0.56",
@@ -31,9 +29,10 @@
 		"@vue/cli-service": "~5.0.0",
 		"babel-plugin-component": "^1.1.1",
 		"eslint": "^7.32.0",
+		"node-sass": "^8.0.0",
+		"sass-loader": "7.0.1",
 		"eslint-plugin-vue": "^8.0.3",
 		"http-proxy-middleware": "^2.0.6",
-		"sass": "^1.62.0",
 		"vue-template-compiler": "^2.6.14"
 	},
 	"eslintConfig": {

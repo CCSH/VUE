@@ -23,17 +23,7 @@
 				<a-button type="text" icon="zoom-out" @click="changeScale(false)"></a-button>
 				<a-input-number :value="scaleValue" :min="scaleMin" :max="scaleMax" :step="0.1" disabled style="width: 70px" :formatter="value => `${(value * 100).toFixed(0)}%`" :parser="value => value.replace('%', '')" />
 				<a-button type="text" icon="zoom-in" @click="changeScale(true)"></a-button>
-				<a-button type="primary" icon="redo" @click="rotatePaper()">旋转</a-button>
 				<a-button type="primary" icon="eye" @click="preView">预览</a-button>
-				<!-- <a-button type="primary" icon="printer" @click="print">
-          直接打印
-        </a-button>
-        <a-button type="primary" @click="onlyPrint">
-          Api单独打印
-        </a-button>
-        <a-button type="primary" @click="onlyPrint2">
-          Api单独直接打印
-        </a-button> -->
 				<a-popconfirm title="是否确认清空?" okType="danger" okText="确定清空" @confirm="clearPaper">
 					<a-icon slot="icon" type="question-circle-o" style="color: red" />
 					<a-button type="danger">
@@ -44,65 +34,10 @@
 				<json-view :template="template" />
 			</a-space>
 			<a-space style="margin-bottom: 10px">
-				<a-button type="primary" @click="exportPdf('')">导出获取pdf(Blob)</a-button>
-				<a-button type="primary" @click="exportPdf('arraybuffer')">导出获取pdf(ArrayBuffer)</a-button>
-				<a-button type="primary" @click="exportPdf('dataurl')">导出获取pdf(DataUrl)</a-button>
-				<a-button type="primary" @click="exportPdf('bloburl')">导出获取pdf(BlobUrl)</a-button>
-				<a-button type="primary" @click="exportPdf('dataurlstring')">导出获取pdf(DataUrlString)</a-button>
-				<a-button type="primary" @click="exportPdf('pdfobjectnewwindow')">导出查看pdf(PdfObjectNewWindow)</a-button>
-			</a-space>
-			<a-space style="margin-bottom: 10px">
-				<!-- <a-button type="primary" @click="ippPrintAttr">
-          ipp获取 打印机 参数情况
-        </a-button>
-        <a-button type="primary" @click="ippPrintTest">
-          ipp打印测试
-        </a-button>
-        <a-button type="primary" @click="ippRequestTest">
-          ipp请求 获取 打印机 参数情况
-        </a-button>
-        <a-button type="primary" @click="ippRequestPrint">
-          ipp请求 打印测试
-        </a-button> -->
-			</a-space>
-			<a-space style="margin-bottom: 10px">
 				<a-textarea style="width: 25vw" v-model="jsonIn" @pressEnter="updateJson" placeholder="复制json模板到此后 点击右侧更新" allow-clear />
 				<a-button type="primary" @click="updateJson">更新json模板</a-button>
 				<a-button type="primary" @click="exportJson">导出json模板到 textArea</a-button>
 				<a-textarea style="width: 25vw" v-model="jsonOut" placeholder="点击左侧导出json" allow-clear />
-			</a-space>
-			<a-space style="margin-bottom: 10px">
-				<a-button type="primary" @click="getSelectEls">获取选中元素</a-button>
-				<a-button type="primary" @click="updateFontSize">选中元素字体12pt</a-button>
-				<a-button type="primary" @click="updateFontWeight">选中元素字体Bolder</a-button>
-				<a-button type="primary" @click="setElsSpace(true)">水平间距10</a-button>
-				<a-button type="primary" @click="setElsSpace(false)">垂直间距10</a-button>
-				<a-radio-group>
-					<a-radio-button @click="setElsAlign('left')" title="左对齐">
-						<span class="glyphicon glyphicon-object-align-left"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('vertical')" title="居中">
-						<span class="glyphicon glyphicon-object-align-vertical"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('right')" title="右对齐">
-						<span class="glyphicon glyphicon-object-align-right"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('top')" title="顶部对齐">
-						<span class="glyphicon glyphicon-object-align-top"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('horizontal')" title="垂直居中">
-						<span class="glyphicon glyphicon-object-align-horizontal"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('bottom')" title="底部对齐">
-						<span class="glyphicon glyphicon-object-align-bottom"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('distributeHor')" title="横向分散">
-						<span class="glyphicon glyphicon-resize-horizontal"></span>
-					</a-radio-button>
-					<a-radio-button @click="setElsAlign('distributeVer')" title="纵向分散">
-						<span class="glyphicon glyphicon-resize-vertical"></span>
-					</a-radio-button>
-				</a-radio-group>
 			</a-space>
 		</div>
 		<a-row :gutter="[8, 0]">
@@ -111,7 +46,7 @@
 					<a-row>
 						<a-col :span="24" class="rect-printElement-types hiprintEpContainer">
 							<a-row class="drag_item_title">拖拽组件列表</a-row>
-							<a-row style="height: 100px">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.text" style>
@@ -129,7 +64,7 @@
 									</div>
 								</a-col>
 							</a-row>
-							<a-row style="height: 100px">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.longText">
@@ -147,7 +82,7 @@
 									</div>
 								</a-col>
 							</a-row>
-							<a-row style="height: 100px">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.emptyTable" style>
@@ -156,8 +91,6 @@
 										</a>
 									</div>
 								</a-col>
-							</a-row>
-							<a-row style="height: 100px">
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.html" style="">
@@ -166,6 +99,8 @@
 										</a>
 									</div>
 								</a-col>
+							</a-row>
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.customText" style>
@@ -176,7 +111,7 @@
 								</a-col>
 							</a-row>
 							<a-row class="drag_item_title">辅助</a-row>
-							<a-row style="height: 100px">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.hline" style>
@@ -194,7 +129,7 @@
 									</div>
 								</a-col>
 							</a-row>
-							<a-row style="height: 100px">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.rect">
@@ -212,7 +147,7 @@
 									</div>
 								</a-col>
 							</a-row>
-							<a-row v-if="currVerInfo.verVal >= 55.3" style="height: 100px">
+							<a-row v-if="currVerInfo.verVal >= 55.3">
 								<a-col :span="12" class="drag_item_box">
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.barcode">
@@ -780,7 +715,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 @import './print/hiprint.css';
 /deep/.ant-card-body {
 	overflow: auto;
@@ -821,11 +756,11 @@ export default {
 }
 
 // 默认图片
-/deep/ .hiprint-printElement-image-content {
-	img {
-		content: url('~@/assets/logo.png');
-	}
-}
+// /deep/ .hiprint-printElement-image-content {
+// 	img {
+// 		content: url('~@/assets/logo.png');
+// 	}
+// }
 
 // 辅助线样式
 /deep/ .toplineOfPosition {

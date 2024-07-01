@@ -6,7 +6,7 @@ export default {
     "paperHeader": 49.5,
     "paperFooter": 780,
     "watermarkOptions": {
-      "content": "vue-plugin-hiprint",
+      "content": "CCSH",
       "rotate": 25,
       "timestamp": true,
       "format": "YYYY-MM-DD HH:mm"

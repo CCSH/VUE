@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }

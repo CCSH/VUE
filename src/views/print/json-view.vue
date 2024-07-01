@@ -70,7 +70,7 @@ export default {
 }
 
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 /deep/ .ant-modal-body {
   padding: 0px;
 }

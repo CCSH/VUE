@@ -262,7 +262,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .manage {
 	overflow: auto;
 	margin-bottom: -100%;

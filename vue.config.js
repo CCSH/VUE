@@ -47,4 +47,9 @@ module.exports = defineConfig({
 		// 	return args
 		// })
 	},
+	css: {
+		loaderOptions: {
+			sass: {},
+		},
+	},
 })

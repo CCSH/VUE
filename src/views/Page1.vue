@@ -1,5 +1,7 @@
 <template>
-	<div>Page1{{ name }}</div>
+	<div>
+		<span style="font-size: 30px" class="glyphicon glyphicon-qrcode" aria-hidden="true">Page1{{ name }}</span>
+	</div>
 </template>
 
 <script>
@@ -15,4 +17,4 @@ export default {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>

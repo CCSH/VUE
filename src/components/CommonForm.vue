@@ -442,23 +442,23 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@width: 220px;
+<style lang="scss" scoped>
+$width: 220px;
 
 form {
   overflow: hidden;
 }
 
 /deep/.el-input {
-  width: @width;
+  width: $width;
 }
 
 /deep/.el-select {
-  width: @width;
+  width: $width;
 }
 
 /deep/.el-date-editor.el-input {
-  width: @width;
+  width: $width;
 }
 /deep/.el-date-editor .el-range-separator {
   width: 20px !important;

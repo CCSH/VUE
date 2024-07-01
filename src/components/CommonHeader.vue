@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .header-container {
   padding: 0 20px;
   background-color: #333;

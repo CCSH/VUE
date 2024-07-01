@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .tabs {
   display: flex;
   padding: 20px;
