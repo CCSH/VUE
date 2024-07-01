@@ -175,7 +175,7 @@
 import * as vuePluginHiprint from 'vue-plugin-hiprint'
 import printData from './static/print-data'
 import jsonView from './print/jsonView.vue'
-import preView from './print/preView'
+import preView from './print/1preView.vue'
 import src from './static/ccsh.js' //替换属性
 
 var hiprint, defaultElementTypeProvider, panel
