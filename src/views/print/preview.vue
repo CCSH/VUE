@@ -15,7 +15,6 @@
 				<a-button key="close" type="info" @click="hideModal">关闭</a-button>
 			</template>
 		</a-modal>
-		<div id="abc"></div>
 	</div>
 </template>
 
@@ -51,9 +50,7 @@ export default {
 			this.hiprintTemplate = hiprintTemplate
 			this.printData = printData
 			setTimeout(() => {
-				// eslint-disable-next-line no-undef
 				$('#preview_content_design').html(hiprintTemplate.getHtml(printData))
-				$('#abc').html(hiprintTemplate.getHtml(printData))
 				this.spinning = false
 			}, 500)
 		},

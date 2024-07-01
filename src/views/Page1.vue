@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<span style="font-size: 30px" class="glyphicon glyphicon-qrcode" aria-hidden="true">Page1{{ name }}</span>
+		<span>Page1{{ name }}</span>
 	</div>
 </template>
 
