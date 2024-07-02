@@ -177,7 +177,9 @@ import * as vuePluginHiprint from 'vue-plugin-hiprint'
 import printData from './static/prin-data'
 import jsonView from './print/jsonView.vue'
 import printView from './print/printView.vue'
-import src from './static/ccsh.js' //替换属性
+//替换属性
+import src from './static/src.js' 
+import fontSize from './static/fontSize.js'
 
 var hiprint, defaultElementTypeProvider, panel
 let hiprintTemplate
@@ -272,7 +274,7 @@ export default {
 			hiprint = vuePluginHiprint.hiprint
 			defaultElementTypeProvider = vuePluginHiprint.defaultElementTypeProvider
 			vuePluginHiprint.disAutoConnect()
-			
+
 			hiprint.init({
 				providers: [new defaultElementTypeProvider()],
 				lang: this.$parent.lang,
@@ -281,7 +283,7 @@ export default {
 			hiprint.setConfig()
 			// 替换配置
 			hiprint.setConfig({
-				optionItems: [src],
+				optionItems: [src,fontSize],
 			})
 			// eslint-disable-next-line no-undef
 			hiprint.PrintElementTypeManager.buildByHtml($('.ep-draggable-item'))
