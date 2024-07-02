@@ -5,8 +5,8 @@ export default {
 			name: 1,
 			height: 40,
 			width: 76,
-			paperHeader: 49.5,
-			paperFooter: 105.05050505050504,
+			paperHeader: 0,
+			paperFooter: 0,
 			printElements: [
 				{ options: { left: 7.5, top: 4.5, height: 13.5, width: 199.5, title: '商品名称', testData: '123', coordinateSync: false, widthHeightSync: false, fontSize: 12, fontWeight: 'bolder', color: '#000000', qrCodeLevel: 0, right: 207, bottom: 17.25, vCenter: 107.25, hCenter: 10.5, field: 'title' }, printElementType: { title: '文本', type: 'text' } },
 				{ options: { left: 147, top: 22.5, height: 60, width: 60, title: '二维码', qrcodeType: 'qrcode', testData: '', right: 206.25, bottom: 82.5, vCenter: 176.25, hCenter: 52.5, coordinateSync: false, widthHeightSync: false, field: 'qrCode', hideTitle: true }, printElementType: { title: '二维码', type: 'qrcode' } },
