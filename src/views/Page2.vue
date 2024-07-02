@@ -272,6 +272,7 @@ export default {
 			hiprint = vuePluginHiprint.hiprint
 			defaultElementTypeProvider = vuePluginHiprint.defaultElementTypeProvider
 			vuePluginHiprint.disAutoConnect()
+			
 			hiprint.init({
 				providers: [new defaultElementTypeProvider()],
 				lang: this.$parent.lang,
