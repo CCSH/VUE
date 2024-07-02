@@ -24,13 +24,14 @@
 				<a-input-number :value="scaleValue" :min="scaleMin" :max="scaleMax" :step="0.1" disabled style="width: 70px" :formatter="value => `${(value * 100).toFixed(0)}%`" :parser="value => value.replace('%', '')" />
 				<a-button type="text" icon="zoom-in" @click="changeScale(true)"></a-button>
 				<a-button type="primary" icon="eye" @click="preView">预览</a-button>
-				<a-popconfirm title="是否确认清空?" okType="danger" okText="确定清空" @confirm="clearPaper">
+				<a-popconfirm title="是否确认清空?" okType="danger" okText="确定清空" cancelText="取消" @confirm="clearPaper">
 					<a-icon slot="icon" type="question-circle-o" style="color: red" />
 					<a-button type="danger">
 						清空
 						<a-icon type="close" />
 					</a-button>
 				</a-popconfirm>
+				<!-- 查看json -->
 				<json-view :template="template" />
 			</a-space>
 			<a-space style="margin-bottom: 10px">
@@ -173,7 +174,7 @@
 
 <script defer>
 import * as vuePluginHiprint from 'vue-plugin-hiprint'
-import printData from './static/print-data'
+import printData from './static/prin-data'
 import jsonView from './print/jsonView.vue'
 import printView from './print/printView.vue'
 import src from './static/ccsh.js' //替换属性
@@ -284,7 +285,6 @@ export default {
 			// eslint-disable-next-line no-undef
 			hiprint.PrintElementTypeManager.buildByHtml($('.ep-draggable-item'))
 			$('#hiprint-printTemplate').empty()
-			let that = this
 			this.template = hiprintTemplate = new hiprint.PrintTemplate({
 				template: panel, //默认信息
 				// 自定义可选字体
@@ -471,12 +471,12 @@ export default {
 	font-weight: bold;
 }
 
-// 默认图片
-// /deep/ .hiprint-printElement-image-content {
-// 	img {
-// 		content: url('~@/assets/logo.png');
-// 	}
-// }
+//默认图片
+/deep/ .hiprint-printElement-image-content {
+	img {
+		content: url('~@/assets/logo.png');
+	}
+}
 
 // 辅助线样式
 /deep/ .toplineOfPosition {
@@ -504,5 +504,9 @@ export default {
 	overflow: hidden;
 	overflow-x: auto;
 	overflow-y: auto;
+}
+
+.ep-draggable-item {
+	color: unset;
 }
 </style>

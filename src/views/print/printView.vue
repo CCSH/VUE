@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<a-modal :visible="visible" :maskClosable="false" @cancel="hideModal" :width="width + 'mm'">
+		<a-modal :visible="visible" :maskClosable="false" @cancel="hideModal" :width="width + 'mm'" :closable="false">
 			<a-spin :spinning="spinning" style="min-height: 100px">
 				<div id="preview_content_design"></div>
 			</a-spin>
