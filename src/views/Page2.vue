@@ -56,16 +56,14 @@
 						<span class="iconfont sv-bottom"></span>
 					</a-radio-button>
 					<a-radio-button @click="setElsAlign('distributeHor')" title="横向分散">
-						<span class="iconfont sv-nav-left"></span>
-						<span class="iconfont sv-nav-right"></span>
+						<span class="iconfont icon-resize-horizontal"></span>
 					</a-radio-button>
 					<a-radio-button @click="setElsAlign('distributeVer')" title="纵向分散">
-						<span class="iconfont sv-nav-up"></span>
-						<span class="iconfont sv-nav-down"></span>
+						<span class="iconfont icon-resize-vertical"></span>
 					</a-radio-button>
 				</a-radio-group>
 				<!-- 多面板 -->
-				<!-- <div class="hiprint-printPagination"></div> -->
+				<div class="hiprint-printPagination"></div>
 			</a-space>
 		</div>
 		<a-row :gutter="[8, 0]">
@@ -160,7 +158,7 @@
 							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
-										<a class="ep-draggable-item" tid="ccshModule.barcode">
+										<a class="ep-draggable-item" tid="defaultModule.barcode">
 											<span class="iconfont sv-barcode" aria-hidden="true"></span>
 											<p>条形码</p>
 										</a>
@@ -181,6 +179,14 @@
 										<a class="ep-draggable-item" tid="ccshModule.order">
 											<span class="iconfont sv-bug" aria-hidden="true"></span>
 											<p>ccsh</p>
+										</a>
+									</div>
+								</a-col>
+								<a-col :span="12" class="drag_item_box">
+									<div>
+										<a class="ep-draggable-item" tid="ccshModule.barcode">
+											<span class="iconfont sv-barcode" aria-hidden="true"></span>
+											<p>条形码2</p>
 										</a>
 									</div>
 								</a-col>
@@ -472,6 +478,7 @@ export default {
 
 <style lang="scss" scoped>
 @import './print/hiprint.css';
+
 /deep/.ant-card-body {
 	overflow: auto;
 	height: calc(100vh - 186px);
@@ -545,6 +552,7 @@ export default {
 	overflow-y: auto;
 }
 
+//拖拽按钮
 .ep-draggable-item {
 	color: unset;
 	display: flex;
