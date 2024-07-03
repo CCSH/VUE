@@ -11,10 +11,10 @@ import '@/assets/css/iconfont.css'
 import '@/utils/tool.js'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
-Vue.use(Antd)
 
 //全局引入
 Vue.use(ElementUI)
+Vue.use(Antd)
 
 Vue.config.productionTip = false
 

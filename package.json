@@ -49,6 +49,11 @@
 		},
 		"rules": {}
 	},
+	"keywords": [
+		"vue",
+		"ccsh",
+		"管理系统"
+	],
 	"browserslist": [
 		"> 1%",
 		"last 2 versions",

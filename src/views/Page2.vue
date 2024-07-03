@@ -11,9 +11,9 @@
 					<a-popover v-model="paperPopVisible" title="设置纸张宽高(mm)" trigger="click">
 						<div slot="content">
 							<a-input-group compact style="margin: 10px 10px">
-								<a-input type="number" v-model="paperWidth" style="width: 100px; text-align: center" placeholder="宽(mm)" />
+								<a-input type="number" v-model="paperWidth" style="width: 100px; text: center" placeholder="宽(mm)" />
 								<a-input style="width: 30px; border-left: 0; pointer-events: none; backgroundcolor: #fff" placeholder="~" disabled />
-								<a-input type="number" v-model="paperHeight" style="width: 100px; text-align: center; border-left: 0" placeholder="高(mm)" />
+								<a-input type="number" v-model="paperHeight" style="width: 100px; text: center; border-left: 0" placeholder="高(mm)" />
 							</a-input-group>
 							<a-button type="primary" style="width: 100%" @click="otherPaper">确定</a-button>
 						</div>
@@ -31,16 +31,41 @@
 						<a-icon type="close" />
 					</a-button>
 				</a-popconfirm>
+				<a-button type="primary" icon="save" @click="saveJson">保存模版</a-button>
 				<!-- 查看json -->
 				<json-view :template="template" />
 			</a-space>
 			<a-space style="margin-bottom: 10px">
-				<a-textarea style="width: 25vw" v-model="jsonIn" @pressEnter="updateJson" placeholder="复制json模板到此后 点击右侧更新" allow-clear />
-				<a-button type="primary" @click="updateJson">更新json模板</a-button>
-				<a-button type="primary" @click="exportJson">导出json模板到 textArea</a-button>
-				<a-textarea style="width: 25vw" v-model="jsonOut" placeholder="点击左侧导出json" allow-clear />
-				<!-- 多面板的容器 -->
-				<!-- <div class="hiprint-printPagination" style="margin-top: 14px"></div> -->
+				<a-radio-group style="height: 55px">
+					<a-radio-button @click="setElsAlign('left')" title="左对齐">
+						<span class="iconfont sv-left"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('vertical')" title="居中">
+						<span class="iconfont sv-vertical"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('right')" title="右对齐">
+						<span class="iconfont sv-right"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('top')" title="顶部对齐">
+						<span class="iconfont sv-top"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('horizontal')" title="垂直居中">
+						<span class="iconfont sv-horizontal"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('bottom')" title="底部对齐">
+						<span class="iconfont sv-bottom"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('distributeHor')" title="横向分散">
+						<span class="iconfont sv-nav-left"></span>
+						<span class="iconfont sv-nav-right"></span>
+					</a-radio-button>
+					<a-radio-button @click="setElsAlign('distributeVer')" title="纵向分散">
+						<span class="iconfont sv-nav-up"></span>
+						<span class="iconfont sv-nav-down"></span>
+					</a-radio-button>
+				</a-radio-group>
+				<!-- 多面板 -->
+				<!-- <div class="hiprint-printPagination"></div> -->
 			</a-space>
 		</div>
 		<a-row :gutter="[8, 0]">
@@ -54,7 +79,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.text" style>
 											<span class="iconfont sv-text" aria-hidden="true"></span>
-											<p class="glyphicon-class">文本</p>
+											<p>文本</p>
 										</a>
 									</div>
 								</a-col>
@@ -62,7 +87,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.image" style>
 											<span class="iconfont sv-image" aria-hidden="true"></span>
-											<p class="glyphicon-class">图片</p>
+											<p>图片</p>
 										</a>
 									</div>
 								</a-col>
@@ -72,7 +97,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.longText">
 											<span class="iconfont sv-longText" aria-hidden="true"></span>
-											<p class="glyphicon-class">长文</p>
+											<p>长文</p>
 										</a>
 									</div>
 								</a-col>
@@ -80,7 +105,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.emptyTable" style>
 											<span class="iconfont sv-table" aria-hidden="true"></span>
-											<p class="glyphicon-class">表格</p>
+											<p>表格</p>
 										</a>
 									</div>
 								</a-col>
@@ -90,7 +115,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.html" style="">
 											<span class="iconfont sv-html" aria-hidden="true"></span>
-											<p class="glyphicon-class">html</p>
+											<p>html</p>
 										</a>
 									</div>
 								</a-col>
@@ -101,7 +126,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.hline" style>
 											<span class="iconfont sv-hline" aria-hidden="true"></span>
-											<p class="glyphicon-class">横线</p>
+											<p>横线</p>
 										</a>
 									</div>
 								</a-col>
@@ -109,7 +134,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.vline" style>
 											<span class="iconfont sv-vline" aria-hidden="true"></span>
-											<p class="glyphicon-class">竖线</p>
+											<p>竖线</p>
 										</a>
 									</div>
 								</a-col>
@@ -119,7 +144,7 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.rect">
 											<span class="iconfont sv-rect" aria-hidden="true"></span>
-											<p class="glyphicon-class">矩形</p>
+											<p>矩形</p>
 										</a>
 									</div>
 								</a-col>
@@ -127,17 +152,17 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.oval">
 											<span class="iconfont sv-oval" aria-hidden="true"></span>
-											<p class="glyphicon-class">圆形</p>
+											<p>圆形</p>
 										</a>
 									</div>
 								</a-col>
 							</a-row>
-							<a-row v-if="currVerInfo.verVal >= 55.3">
+							<a-row>
 								<a-col :span="12" class="drag_item_box">
 									<div>
-										<a class="ep-draggable-item" tid="defaultModule.barcode">
+										<a class="ep-draggable-item" tid="ccshModule.barcode">
 											<span class="iconfont sv-barcode" aria-hidden="true"></span>
-											<p class="glyphicon-class">条形码</p>
+											<p>条形码</p>
 										</a>
 									</div>
 								</a-col>
@@ -145,7 +170,17 @@
 									<div>
 										<a class="ep-draggable-item" tid="defaultModule.qrcode">
 											<span class="iconfont sv-qrcode" aria-hidden="true"></span>
-											<p class="glyphicon-class">二维码</p>
+											<p>二维码</p>
+										</a>
+									</div>
+								</a-col>
+							</a-row>
+							<a-row>
+								<a-col :span="12" class="drag_item_box">
+									<div>
+										<a class="ep-draggable-item" tid="ccshModule.order">
+											<span class="iconfont sv-bug" aria-hidden="true"></span>
+											<p>ccsh</p>
 										</a>
 									</div>
 								</a-col>
@@ -178,8 +213,10 @@ import printData from './static/prin-data'
 import jsonView from './print/jsonView.vue'
 import printView from './print/printView.vue'
 //替换属性
-import src from './static/src.js' 
-import fontSize from './static/fontSize.js'
+import src from './static/ccsh-src.js'
+import fontSize from './static/ccsh-fontSize.js'
+//自定义组件
+import CcshProvider from './static/ccsh-providers.js'
 
 var hiprint, defaultElementTypeProvider, panel
 let hiprintTemplate
@@ -190,11 +227,7 @@ export default {
 	data() {
 		return {
 			template: null,
-			curPaper: {
-				type: 'A4',
-				width: 210,
-				height: 296.6,
-			},
+			curPaper: {},
 			paperTypes: {
 				A3: {
 					width: 420,
@@ -229,9 +262,6 @@ export default {
 			scaleValue: 1,
 			scaleMax: 5,
 			scaleMin: 0.5,
-			// 导入导出json
-			jsonIn: '',
-			jsonOut: '',
 		}
 	},
 	computed: {
@@ -246,15 +276,6 @@ export default {
 				}
 			}
 			return type
-		},
-		/**
-		 * @description: 当前版本信息，用于 demo 页面根据版本控制功能
-		 * @return {Object}
-		 */
-		currVerInfo() {
-			return {
-				verVal: 9999,
-			}
 		},
 	},
 	mounted() {
@@ -271,25 +292,35 @@ export default {
 			panel = panels('./static/panel.js').default
 		},
 		init() {
-			hiprint = vuePluginHiprint.hiprint
-			defaultElementTypeProvider = vuePluginHiprint.defaultElementTypeProvider
 			vuePluginHiprint.disAutoConnect()
+			defaultElementTypeProvider = vuePluginHiprint.defaultElementTypeProvider
 
+			hiprint = vuePluginHiprint.hiprint
 			hiprint.init({
-				providers: [new defaultElementTypeProvider()],
+				providers: [new CcshProvider(), new defaultElementTypeProvider()],
 				lang: this.$parent.lang,
 			})
+			//渲染自定义
+			// hiprint.PrintElementTypeManager.build('.hiprintEpContainer', 'ccshModule')
 			// 还原配置
 			hiprint.setConfig()
 			// 替换配置
 			hiprint.setConfig({
-				optionItems: [src,fontSize],
+				optionItems: [src, fontSize],
 			})
 			// eslint-disable-next-line no-undef
 			hiprint.PrintElementTypeManager.buildByHtml($('.ep-draggable-item'))
 			$('#hiprint-printTemplate').empty()
+			let that = this
 			this.template = hiprintTemplate = new hiprint.PrintTemplate({
 				template: panel, //默认信息
+				defaultPanelName: '默认面板',
+				onPanelAddClick: (panel, createPanel) => {
+					panel.name = '新面板' + (panel.index + 1)
+					createPanel(panel)
+					// this.changeMode()
+				},
+
 				// 自定义可选字体
 				// 或者使用 hiprintTemplate.setFontList([])
 				// 或元素中 options.fontList: []
@@ -314,12 +345,17 @@ export default {
 					console.log(e)
 				},
 				settingContainer: '#PrintElementOptionSetting', //设置容器
-				// paginationContainer: '.hiprint-printPagination',//多面板容器
+				paginationContainer: '.hiprint-printPagination', //多面板容器
 			})
 			// 画板 网格线
 			hiprintTemplate.design('#hiprint-printTemplate', { grid: true })
 			// 获取当前放大比例, 当zoom时传true 才会有
 			this.scaleValue = hiprintTemplate.editingPanel.scale || 1
+
+			//纸张大小
+			this.paperWidth = panel.panels[0].width
+			this.paperHeight = panel.panels[0].height
+			this.otherPaper()
 		},
 		/**
 		 * 设置纸张大小
@@ -416,19 +452,19 @@ export default {
 				this.$message.error(`操作失败: ${error}`)
 			}
 		},
-		updateJson() {
-			if (hiprintTemplate) {
-				try {
-					hiprintTemplate.update(JSON.parse(this.jsonIn))
-				} catch (e) {
-					this.$message.error(`更新失败: ${e}`)
-				}
-			}
+		saveJson() {
+			hiprintTemplate.update(hiprintTemplate.getJson() || {})
 		},
-		exportJson() {
-			if (hiprintTemplate) {
-				this.jsonOut = JSON.stringify(hiprintTemplate.getJson() || {})
-			}
+		setElsAlign(e) {
+			hiprintTemplate.setElsAlign(e)
+		},
+		//切换拖拽模式
+		changeMode() {
+			hiprint.init({
+				providers: [new CcshProvider()],
+			})
+			$('.hiprintEpContainer').empty()
+			hiprint.PrintElementTypeManager.build('.hiprintEpContainer', 'ccshModule')
 		},
 	},
 }
@@ -456,7 +492,7 @@ export default {
 }
 
 .drag_item_box > div > a {
-	text-align: center;
+	text: center;
 	text-decoration-line: none;
 }
 
@@ -511,5 +547,12 @@ export default {
 
 .ep-draggable-item {
 	color: unset;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 }
 </style>
