@@ -51,7 +51,7 @@ export default {
 	 */
 	mounted() {
 		//当页面被挂载并准备插入DOM时执行。这是一个生命周期方法，在其相应的生命周期中被调用。例如:可用于数据初始化。
-		this.requestList()
+		this.requestInfo()
 	},
 	/**
 	 * Updates the component with new data before rendering.
@@ -100,7 +100,8 @@ export default {
 	},
 	methods: {
 		//方法是Vue实例对象上绑定的方法。methods必须要有一定的触发条件才能执行。例如按钮点击。接口请求。
-		requestList() {},
+		requestInfo() {
+		},
 	},
 }
 </script>

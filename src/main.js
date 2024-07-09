@@ -18,6 +18,9 @@ Vue.use(Antd)
 
 Vue.config.productionTip = false
 
+  // 引入 mock.js 文件
+	require('./api/mock.js'); 
+
 //添加全局守卫
 router.beforeEach((to, from, next) => {
 	const token = Cookie.get('token')

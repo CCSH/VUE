@@ -63,7 +63,7 @@
 					</a-radio-button>
 				</a-radio-group>
 				<!-- 多面板 -->
-				<div class="hiprint-printPagination"></div>
+				<!-- <div class="hiprint-printPagination"></div> -->
 			</a-space>
 		</div>
 		<a-row :gutter="[8, 0]">
