@@ -11,6 +11,15 @@ body {
 	font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, PingFang SC-Light, Microsoft YaHei;
 	margin: 0;
 }
+
+/* 禁止整个页面的长按选择 */
+body {
+	-webkit-user-select: none; /* 兼容 Safari 浏览器 */
+	-moz-user-select: none; /* 兼容 Firefox 浏览器 */
+	-ms-user-select: none; /* 兼容 IE 浏览器 */
+	user-select: none; /* 标准语法 */
+}
+
 button {
 	margin: 0;
 	padding: 0;
